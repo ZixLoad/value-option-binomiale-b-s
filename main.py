@@ -6,7 +6,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
-# Fonctions de pricing d'options (placées avant l'interface Tkinter)
 def binomial_option_price(S, K, T, r, sigma, N, option_type="call"):
     dt = T / N
     u = math.exp(sigma * math.sqrt(dt))
@@ -42,11 +41,11 @@ def black_scholes_option_price(S, K, T, r, sigma, option_type="call"):
 
     return price
 
-# Interface Tkinter
+
 fenetre = tk.Tk()
 fenetre.title("Calculateur de prix d'options")
 
-# Variables Tkinter
+
 entry_S = DoubleVar()
 entry_K = DoubleVar()
 entry_T = DoubleVar()
@@ -57,7 +56,7 @@ resultat_binomial = StringVar()
 resultat_black_scholes = StringVar()
 option_var = StringVar(value="Call")
 
-# Fonctions d'interaction
+
 def calculer():
     try:
         S = float(entry_S.get())
@@ -108,7 +107,7 @@ def charger_donnees():
     except Exception as e:
         messagebox.showerror("Erreur lors du chargement des données", str(e))
 
-# Création des éléments Tkinter
+
 ttk.Label(fenetre, text="Prix de l'actif (S):").grid(row=0, column=0, sticky="w")
 ttk.Entry(fenetre, textvariable=entry_S).grid(row=0, column=1)
 ttk.Label(fenetre, text="Prix d'exercice (K):").grid(row=1, column=0, sticky="w")
